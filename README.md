@@ -1,3 +1,3 @@
 # PickTheRightTruck
-this program calculates the cheapest shipping truck to use for an LTL load. 
+This program calculates the cheapest shipping truck to use for an LTL load. 
 Based on truck size.
