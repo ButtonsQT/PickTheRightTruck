@@ -1,0 +1,10 @@
+C:\Users\Earth_Monk\source\repos\truckCalculator1\truckCalculator1\obj\Debug\truckCalculator1.csprojAssemblyReference.cache
+C:\Users\Earth_Monk\source\repos\truckCalculator1\truckCalculator1\obj\Debug\truckCalculator1.GlorifiedCalculator.resources
+C:\Users\Earth_Monk\source\repos\truckCalculator1\truckCalculator1\obj\Debug\truckCalculator1.Properties.Resources.resources
+C:\Users\Earth_Monk\source\repos\truckCalculator1\truckCalculator1\obj\Debug\truckCalculator1.csproj.GenerateResource.cache
+C:\Users\Earth_Monk\source\repos\truckCalculator1\truckCalculator1\obj\Debug\truckCalculator1.csproj.CoreCompileInputs.cache
+C:\Users\Earth_Monk\source\repos\truckCalculator1\truckCalculator1\bin\Debug\truckCalculator1.exe.config
+C:\Users\Earth_Monk\source\repos\truckCalculator1\truckCalculator1\bin\Debug\truckCalculator1.exe
+C:\Users\Earth_Monk\source\repos\truckCalculator1\truckCalculator1\bin\Debug\truckCalculator1.pdb
+C:\Users\Earth_Monk\source\repos\truckCalculator1\truckCalculator1\obj\Debug\truckCalculator1.exe
+C:\Users\Earth_Monk\source\repos\truckCalculator1\truckCalculator1\obj\Debug\truckCalculator1.pdb
