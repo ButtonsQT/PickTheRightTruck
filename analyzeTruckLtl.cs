@@ -122,9 +122,6 @@ namespace truckCalculator1
             return smallestNumber;
         }
 
-        int rowsUnit = CalculateUnit() / unitsSideBySideCargoVan;
-        int newUnitLength = rowsUnit * CalculateUnit();//calculated length user input unit length
-
         // this button click activates the program to run equations
         //TODO: If theres time build a auto/copy paste method so user can extract the calculations information.
         // user might need this for expedites this will save them the need to type it out. 
@@ -146,17 +143,13 @@ namespace truckCalculator1
             }
 
             string calculationsFortruckMessage = " needed for this load. " +
-                    "\n The length is " + CalculateLength() +
-                                "\n The width is " + CalculateWidth() + " "+ 
-                    "\n The height is " + CalculateHeight() +
-                    "\n The weight is " + CalculateWeight()+"\n";
+                   "\n The length is " + CalculateLength() +
+                   "\n The width is " + CalculateWidth() + " " +
+                   "\n The height is " + CalculateHeight() +
+                   "\n The weight is " + CalculateWeight() + "\n";
 
-            string calculationsFortrucklength = = " needed for this load. " +
-                    "\n The length is " + newUnitLength +
-                                "\n The width is " + CalculateWidth() + " " +
-                    "\n The height is " + CalculateHeight() +
-                    "\n The weight is " + CalculateWeight() + "\n";
 
+          
             //Cargo van size Check LxWxh, verifys that weight is with in range.
             if (CalculateLength() <= 108 && CalculateWidth() <= 48 && CalculateHeight() <= 47 && CalculateWeight() <= 2000)
             {
@@ -166,29 +159,49 @@ namespace truckCalculator1
                 int unitsHowHighCargoVan = 47 / CalculateHeight();
                 int smallestOfWidth = Math.Min(unitsSideBySideCargoVan, CalculateUnit());
                 int smallestOfHeight = Math.Min(unitsHowHighCargoVan, CalculateUnit());
-                //int rowsUnit = CalculateUnit() / unitsSideBySideCargoVan;
-                //int newUnitLength = rowsUnit * CalculateUnit();//calculated length user input unit length
+                int rowsUnit = CalculateUnit() / smallestOfWidth;
+                int userInputLength = CalculateLength() / CalculateUnit();
+                int calculationsFortrucklength = rowsUnit * userInputLength;//calculated length user input unit length
 
-                if (unitsSideBySideCargoVan == 1){
-                    MessageBox.Show(cargoVan + calculationsFortruckMessage + " "
-                 + smallestOfWidth + " units can fit side by side on this truck" + "\n units can be stacked " + smallestOfHeight +
+
+                string calculationsFortruckMessage3 = " needed for this load. " +    
+                                   "\n The length is " + CalculateLength() +
+                                   "\n The width is " + CalculateWidth() + " " +
+                                   "\n The height is " + CalculateHeight() +
+                                   "\n The weight is " + CalculateWeight() + "\n";
+
+                string calculationsFortruckMessage2 = " needed for this load. " +
+                        "\n The length is " + calculationsFortrucklength +
+                        "\n The width is " + CalculateWidth() + " " +
+                        "\n The height is " + CalculateHeight() +
+                        "\n The weight is " + CalculateWeight() + "\n";
+
+                while (unitsSideBySideCargoVan == 1){
+                    MessageBox.Show(cargoVan + calculationsFortruckMessage3 + " "
+                 + smallestOfWidth + " units can fit side by side on this truck" + "\n if stackable units can be stacked " + smallestOfHeight +
                  " tall.");
 
                     return;
                 }
-                else if (unitsSideBySideCargoVan > 1)
+
+               while (unitsSideBySideCargoVan > 1 && calculationsFortrucklength <= 108 && CalculateWidth() <= 48 && 
+                                                  CalculateHeight() <= 47 && CalculateWeight() <= 2000)
+  
+
                     {
-                        MessageBox.Show(cargoVan + calculationsFortrucklength + " "
-                     + smallestOfWidth + " units can fit side by side on this truck" + "\n units can be stacked " + smallestOfHeight +
+                        MessageBox.Show(cargoVan + calculationsFortruckMessage2 + " "
+                     + smallestOfWidth + " units can fit side by side on this truck" + "\n if stackable units can be stacked " + smallestOfHeight +
                      " tall.");
 
                         return;
 
                 }
+
             }
 
             ////sprinter van size Check LxWxh, verifys that weight is with in range
-            else if (CalculateLength() <= 144 && CalculateWidth() <= 50 && CalculateHeight() <= 72 && CalculateWeight() <= 3000)
+            
+            else if (CalculateWidth() <= 50 && CalculateHeight() <= 72 && CalculateWeight() <= 3000)
             {
                 int vehicleHeight = 72 / CalculateHeight();
                 string sprinterVan = "Sprinter";
@@ -196,13 +209,44 @@ namespace truckCalculator1
                 int unitsHowHighSprinterVan = 72 / CalculateHeight();
                 int smallestOfWidth = Math.Min(unitsSideBySideSprinterVan, CalculateUnit());
                 int smallestOfHeight = Math.Min(unitsHowHighSprinterVan, CalculateUnit());
+                int rowsUnit = CalculateUnit() / smallestOfWidth;
+                int userInputLength = CalculateLength() / CalculateUnit();
+                int calculationsFortrucklength = rowsUnit *userInputLength ;//calculated length user input unit length
 
-                MessageBox.Show(sprinterVan + calculationsFortruckMessage + " "
-                                + smallestOfWidth + " units can fit side by side on this truck" + "\n units can be stacked " + smallestOfHeight +
-                                " tall.");
 
-                return;
+                string calculationsFortruckMessage3 = " needed for this load. " +
+                                   "\n The length is " + CalculateLength() +
+                                   "\n The width is " + CalculateWidth() + " " +
+                                   "\n The height is " + CalculateHeight() +
+                                   "\n The weight is " + CalculateWeight() + "\n";
 
+                string calculationsFortruckMessage2 = " needed for this load. " +
+                        "\n The length is " + calculationsFortrucklength +
+                        "\n The width is " + CalculateWidth() + " " +
+                        "\n The height is " + CalculateHeight() +
+                        "\n The weight is " + CalculateWeight() + "\n";
+                if (CalculateLength() <= 144)
+                {
+                   if (unitsSideBySideSprinterVan == 1)
+                    {
+                        MessageBox.Show(sprinterVan + calculationsFortruckMessage3 + " "
+                     + smallestOfWidth + " units can fit side by side on this truck" + "\n if stackable units can be stacked " + smallestOfHeight +
+                     " tall.");
+
+                        return;
+                    }
+                    else if (unitsSideBySideSprinterVan > 1 && calculationsFortrucklength <= 108 && CalculateWidth() <= 48 &&
+                                                       CalculateHeight() <= 47 && CalculateWeight() <= 2000)
+
+                    {
+                        MessageBox.Show(sprinterVan + calculationsFortruckMessage2 + " "
+                     + smallestOfWidth + " units can fit side by side on this truck" + "\n if stackable units can be stacked " + smallestOfHeight +
+                     " tall.");
+
+                        return;
+
+                    }
+                }
             }
 
 
@@ -215,13 +259,41 @@ namespace truckCalculator1
                 int unitsHowHighTwentyTwoFootStraightTruck = 96 / CalculateHeight();
                 int smallestOfWidth = Math.Min(unitsSideBySideTwentyTwoFootStraightTruck, CalculateUnit());
                 int smallestOfHeight = Math.Min(unitsHowHighTwentyTwoFootStraightTruck, CalculateUnit());
+                int rowsUnit = CalculateUnit() / smallestOfWidth;
+                int userInputLength = CalculateLength() / CalculateUnit();
+                int calculationsFortrucklength = rowsUnit * userInputLength;//calculated length user input unit length
 
-                MessageBox.Show(twentyTwoFootStraightTruck + calculationsFortruckMessage + " "
-                                + smallestOfWidth + " units can fit side by side on this truck" + "\n units can be stacked " + smallestOfHeight +
-                                " tall.");
 
-                return;
+                string calculationsFortruckMessage3 = " needed for this load. " +
+                                   "\n The length is " + CalculateLength() +
+                                   "\n The width is " + CalculateWidth() + " " +
+                                   "\n The height is " + CalculateHeight() +
+                                   "\n The weight is " + CalculateWeight() + "\n";
 
+                string calculationsFortruckMessage2 = " needed for this load. " +
+                        "\n The length is " + calculationsFortrucklength +
+                        "\n The width is " + CalculateWidth() + " " +
+                        "\n The height is " + CalculateHeight() +
+                        "\n The weight is " + CalculateWeight() + "\n";
+
+                if (unitsSideBySideTwentyTwoFootStraightTruck == 1)
+                {
+                    MessageBox.Show(twentyTwoFootStraightTruck + calculationsFortruckMessage3 + " "
+                 + smallestOfWidth + " units can fit side by side on this truck" + "\n if stackable units can be stacked " + smallestOfHeight +
+                 " tall.");
+
+                    return;
+                }
+                else if (unitsSideBySideTwentyTwoFootStraightTruck > 1 && CalculateLength() <= 264 && 
+                         CalculateWidth() <= 88 && CalculateHeight() <= 96 && CalculateWeight() < 13000)
+                {
+                    MessageBox.Show(twentyTwoFootStraightTruck + calculationsFortruckMessage2 + " "
+                 + smallestOfWidth + " units can fit side by side on this truck" + "\n if stackable units can be stacked " + smallestOfHeight +
+                 " tall.");
+
+                    return;
+
+                }
             }
 
             //24ft size Check LxWxh, verifys that weight is with in range
@@ -233,13 +305,40 @@ namespace truckCalculator1
                 int unitsHowHighTwentyFourFootStraightTruck = 96 / CalculateHeight();
                 int smallestOfWidth = Math.Min(unitsSideBySideTwentyFourFootStraightTruck, CalculateUnit());
                 int smallestOfHeight = Math.Min(unitsHowHighTwentyFourFootStraightTruck, CalculateUnit());
+                int rowsUnit = CalculateUnit() / smallestOfWidth;
+                int userInputLength = CalculateLength() / CalculateUnit();
+                int calculationsFortrucklength = rowsUnit * userInputLength;//calculated length user input unit length
 
-                MessageBox.Show(twentyFourFootStraightTruck + calculationsFortruckMessage + " "
-                                + smallestOfWidth + " units can fit side by side on this truck" + "\n units can be stacked " + smallestOfHeight +
-                                " tall.");
+                string calculationsFortruckMessage3 = " needed for this load. " +
+                                   "\n The length is " + CalculateLength() +
+                                   "\n The width is " + CalculateWidth() + " " +
+                                   "\n The height is " + CalculateHeight() +
+                                   "\n The weight is " + CalculateWeight() + "\n";
 
-                return;
+                string calculationsFortruckMessage2 = " needed for this load. " +
+                        "\n The length is " + calculationsFortrucklength +
+                        "\n The width is " + CalculateWidth() + " " +
+                        "\n The height is " + CalculateHeight() +
+                        "\n The weight is " + CalculateWeight() + "\n";
 
+                if (unitsSideBySideTwentyFourFootStraightTruck == 1)
+                {
+                    MessageBox.Show(twentyFourFootStraightTruck + calculationsFortruckMessage3 + " "
+                 + smallestOfWidth + " units can fit side by side on this truck" + "\n if stackable units can be stacked " + smallestOfHeight +
+                 " tall.");
+
+                    return;
+                }
+                else if (unitsSideBySideTwentyFourFootStraightTruck > 1 && CalculateLength() <= 288 && 
+                        CalculateWidth() <= 102 && CalculateHeight() <= 96 && CalculateWeight() <= 13000)
+                {
+                    MessageBox.Show(twentyFourFootStraightTruck + calculationsFortruckMessage2 + " "
+                 + smallestOfWidth + " units can fit side by side on this truck" + "\n if stackable units can be stacked " + smallestOfHeight +
+                 " tall.");
+
+                    return;
+
+                }
             }
             //semi trailer size Check LxWxh, verifys that weight is with in range
             else if (CalculateLength() <= 636 && CalculateWidth() <= 102 && CalculateHeight() <= 108 && CalculateWeight() <= 45000)
@@ -250,23 +349,48 @@ namespace truckCalculator1
                 int unitsHowHighSemi = 108 / CalculateHeight();
                 int smallestOfWidth = Math.Min(unitsSideBySideSemi, CalculateUnit());
                 int smallestOfHeight = Math.Min(unitsHowHighSemi, CalculateUnit());
+                int rowsUnit = CalculateUnit() / smallestOfWidth;
+                int userInputLength = CalculateLength() / CalculateUnit();
+                int calculationsFortrucklength = rowsUnit * userInputLength;//calculated length user input unit length
 
-                MessageBox.Show(semi + calculationsFortruckMessage + " "
-                                + smallestOfWidth + " units can fit side by side on this truck" + "\n units can be stacked " + smallestOfHeight +
-                                " tall.");
 
-                return;
+                string calculationsFortruckMessage3 = " needed for this load. " +
+                                   "\n The length is " + CalculateLength() +
+                                   "\n The width is " + CalculateWidth() + " " +
+                                   "\n The height is " + CalculateHeight() +
+                                   "\n The weight is " + CalculateWeight() + "\n";
 
+                string calculationsFortruckMessage2 = " needed for this load. " +
+                        "\n The length is " + calculationsFortrucklength +
+                        "\n The width is " + CalculateWidth() + " " +
+                        "\n The height is " + CalculateHeight() +
+                        "\n The weight is " + CalculateWeight() + "\n";
+
+                if (unitsSideBySideSemi == 1)
+                {
+                    MessageBox.Show(semi + calculationsFortruckMessage3 + " "
+                 + smallestOfWidth + " units can fit side by side on this truck" + "\n if stackable units can be stacked " + smallestOfHeight +
+                 " tall.");
+
+                    return;
+                }
+                else if (unitsSideBySideSemi > 1 && CalculateLength() <= 636 && CalculateWidth() <= 102 && 
+                                                    CalculateHeight() <= 108 && CalculateWeight() <= 45000)
+                {
+                    MessageBox.Show(semi + calculationsFortruckMessage2 + " "
+                 + smallestOfWidth + " units can fit side by side on this truck" + "\n if stackable units can be stacked " + smallestOfHeight +
+                 " tall.");
+
+                    return;
+
+                }
             }
 
 
         }
 
-        //stackable checked box if checked do equation verifying how many units fit height
 
-        //TODO: if this will cause reduced length, check if a smaller truck might work but verify that
-        //while the lentgh is reduced Double check that the width of the smaller truck will still work. 
-        // this will catch all exceptions to the rule.
+
         public void stackable_CheckedChanged(object sender, EventArgs e)
         {
             int Height = 0;
